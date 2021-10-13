@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">QuantityMeasurementApplication</string>
+    <string-array name="metrics">
+        <item>"Length"</item>
+        <item>"Volume"</item>
+        <item>"Weight"</item>
+        <item>"Temperature"</item>
+    </string-array>
 </resources>
