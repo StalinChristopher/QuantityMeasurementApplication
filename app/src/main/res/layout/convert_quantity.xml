@@ -6,14 +6,31 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/topLeftSpinner"
+        android:id="@+id/topLeftSpinnerConvert"
         android:layout_width="148dp"
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:entries="@array/metrics"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/bottomLeftSpinnerConvert"
+        android:layout_width="148dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstValueConvert" />
+
+    <Spinner
+        android:id="@+id/bottomRightSpinnerConvert"
+        android:layout_width="148dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondValueConvert" />
 
     <EditText
         android:id="@+id/firstValueConvert"
@@ -24,17 +41,17 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topLeftSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/topLeftSpinnerConvert"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/equalsSignTextView"
+        android:id="@+id/equalsSignConvert"
         android:layout_width="59dp"
         android:layout_height="43dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="108dp"
         android:layout_marginEnd="12dp"
-        android:text="="
+        android:text="@string/equals"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -52,7 +69,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topLeftSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/topLeftSpinnerConvert"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

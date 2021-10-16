@@ -15,6 +15,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Spinner
+        android:id="@+id/bottomAddSpinner1"
+        android:layout_width="89dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:entries="@array/metrics"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstValueAdd" />
+
+    <Spinner
+        android:id="@+id/bottomAddSpinner3"
+        android:layout_width="89dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="26dp"
+        android:entries="@array/metrics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultValueAdd" />
+
+    <Spinner
+        android:id="@+id/bottomAddSpinner2"
+        android:layout_width="89dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="25dp"
+        android:entries="@array/metrics"
+        app:layout_constraintStart_toEndOf="@+id/bottomAddSpinner1"
+        app:layout_constraintTop_toBottomOf="@+id/secondValueAdd" />
+
     <EditText
         android:id="@+id/firstValueAdd"
         android:layout_width="60dp"
@@ -35,7 +65,7 @@
         android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/plusSignTextView"
+        app:layout_constraintStart_toEndOf="@+id/plusSignConvert"
         app:layout_constraintTop_toBottomOf="@+id/topLeftSpinnerAdd"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -49,18 +79,18 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/equalsSignTextView2"
+        app:layout_constraintStart_toEndOf="@+id/equalsSignAdd"
         app:layout_constraintTop_toBottomOf="@+id/topLeftSpinnerAdd"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/plusSignTextView"
+        android:id="@+id/plusSignConvert"
         android:layout_width="46dp"
         android:layout_height="42dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="104dp"
         android:layout_marginEnd="12dp"
-        android:text="+"
+        android:text="@string/plus"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -69,13 +99,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/equalsSignTextView2"
+        android:id="@+id/equalsSignAdd"
         android:layout_width="46dp"
         android:layout_height="42dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="12dp"
-        android:text="="
+        android:text="@string/equals"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"

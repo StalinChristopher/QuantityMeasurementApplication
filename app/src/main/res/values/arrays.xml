@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="metrics">
+        <item>"Length"</item>
+        <item>"Volume"</item>
+        <item>"Weight"</item>
+        <item>"Temperature"</item>
+    </string-array>
+    <string-array name="weightMetrics">
+        <item>"KILOGRAM"</item>
+        <item>"GRAM"</item>
+        <item>"TONNE"</item>
+    </string-array>
+    <string-array name="lengthMetrics">
+        <item>"METER</item>
+        <item>"KILOMETER</item>
+        <item>"CENTIMETER"</item>
+    </string-array>
+    <string-array name="volumeMetrics">
+        <item>"LITRE"</item>
+        <item>"MILLILITRE"</item>
+        <item>"GALLON"</item>
+    </string-array>
+    <string-array name="temperatureMetrics">
+        <item>"CELSIUS"</item>
+        <item>"FAHRENHEIT"</item>
+        <item>"KELVIN"</item>
+    </string-array>
+
+</resources>
