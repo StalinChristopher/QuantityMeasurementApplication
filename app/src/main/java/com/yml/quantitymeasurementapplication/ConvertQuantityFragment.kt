@@ -1,42 +1,129 @@
 package com.yml.quantitymeasurementapplication
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.yml.quantitymeasurementapplication.util.ConvertValues
 import com.yml.quantitymeasurementapplication.util.DesiredMetric.desiredMetric
+import org.w3c.dom.Text
 
 class ConvertQuantityFragment : Fragment(R.layout.convert_quantity) {
-    lateinit var selectedMetric : String
+    lateinit var topLeftSpinner : Spinner
+    lateinit var bottomLeftSpinner : Spinner
+    lateinit var bottomRightSpinner : Spinner
+    lateinit var userInput : EditText
+    lateinit var resultValue : EditText
+    companion object{
+        var selectedMetric : String = "Length"
+        var firstUnit = "CENTIMETER"
+        var secondUnit = "CENTIMETER"
+        var output = 0.0
+        var input = 0.0
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val topLeftSpinner= view.findViewById<Spinner>(R.id.topLeftSpinnerConvert)
+        topLeftSpinner = view.findViewById<Spinner>(R.id.topLeftSpinnerConvert)
+        bottomLeftSpinner = view.findViewById<Spinner>(R.id.bottomLeftSpinnerConvert)
+        bottomRightSpinner = view.findViewById<Spinner>(R.id.bottomRightSpinnerConvert)
+        userInput = view.findViewById<EditText>(R.id.firstValueConvert)
+        resultValue = view.findViewById(R.id.secondValueConvert)
+
         var arrayAdapter = ArrayAdapter.createFromResource(requireContext(),R.array.metrics,android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         topLeftSpinner.adapter = arrayAdapter
+
+        allListeners()
+
+    }
+
+    private fun allListeners() {
         topLeftSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 selectedMetric = topLeftSpinner.selectedItem.toString()
-                metricsUnit(selectedMetric,view)
+                var unitMetricAdapter = desiredMetric(requireContext(),selectedMetric)
+                bottomLeftSpinner.adapter = unitMetricAdapter
+                bottomRightSpinner.adapter = unitMetricAdapter
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                selectedMetric = "Length"
+                var unitMetricAdapter = desiredMetric(requireContext(),selectedMetric)
+                bottomLeftSpinner.adapter = unitMetricAdapter
+                bottomRightSpinner.adapter = unitMetricAdapter
             }
 
         }
 
+        bottomLeftSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                firstUnit = bottomLeftSpinner?.selectedItem.toString()
+                selectAndConvertValues()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
+        }
+
+        bottomRightSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+                secondUnit = bottomRightSpinner?.selectedItem.toString()
+                selectAndConvertValues()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
+        userInput.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if(userInput.text.isNullOrEmpty()){
+                    input = 0.0
+                    selectAndConvertValues()
+                    return
+                }
+                input= userInput.text.toString().toDouble()
+                selectAndConvertValues()
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
     }
 
-    fun metricsUnit(selectedMetric : String, view: View) {
-        var unitMetricAdapter = desiredMetric(requireContext(),selectedMetric)
-        var bottomLeftSpinner = view.findViewById<Spinner>(R.id.bottomLeftSpinnerConvert)
-        var bottomRightSpinner = view.findViewById<Spinner>(R.id.bottomRightSpinnerConvert)
-        bottomLeftSpinner.adapter = unitMetricAdapter
-        bottomRightSpinner.adapter = unitMetricAdapter
+    private fun selectAndConvertValues() {
+        output = when (selectedMetric) {
+            "Length" -> {
+                ConvertValues.calculateLength(input, firstUnit, secondUnit)
+            }
+            "Weight" -> {
+                ConvertValues.calculateWeight(input, firstUnit, secondUnit)
+            }
+            "Temperature" -> {
+                ConvertValues.calculateTemperature(input, firstUnit, secondUnit)
+            }
+            "Volume" -> {
+                ConvertValues.calculateVolume(input, firstUnit, secondUnit)
+            }
+            else -> 0.0
+        }
+        resultValue.setText(output.toString())
     }
 
 }
+
+
+

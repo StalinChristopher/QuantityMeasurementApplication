@@ -10,7 +10,6 @@ import com.yml.quantitymeasurementapplication.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-//    lateinit var binding : ActivityMainBinding
     companion object{
         val TAG : String = "status"
     }
@@ -18,16 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i(TAG,"Process created")
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        binding.convertQuantityButton.setOnClickListener {
-//            replaceFragment(ConvertQuantityFragment())
-//        }
-//
-//        binding.addQuantityButton.setOnClickListener {
-//            replaceFragment(AddQuantityFragment())
-//        }
+        replaceFragment(ConvertQuantityFragment())
         var convertQuantityButton = findViewById<Button>(R.id.convertQuantityButton)
         var addQuantityButton = findViewById<Button>(R.id.addQuantityButton)
         convertQuantityButton.setOnClickListener{
