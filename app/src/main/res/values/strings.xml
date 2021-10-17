@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuantityMeasurementApplication</string>
+    <string name="app_name">QuantityMeasurement</string>
     <string name="equals">=</string>
     <string name="plus">+</string>
 
