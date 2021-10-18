@@ -1,12 +1,12 @@
 package com.yml.quantitymeasurementapplication
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.yml.quantitymeasurementapplication.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,11 +20,17 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(ConvertQuantityFragment())
         var convertQuantityButton = findViewById<Button>(R.id.convertQuantityButton)
         var addQuantityButton = findViewById<Button>(R.id.addQuantityButton)
+
+        convertQuantityButton.setBackgroundColor(Color.RED)
         convertQuantityButton.setOnClickListener{
             replaceFragment(ConvertQuantityFragment())
+            convertQuantityButton.setBackgroundColor(Color.RED)
+            addQuantityButton.setBackgroundColor(Color.BLUE)
         }
         addQuantityButton.setOnClickListener{
             replaceFragment(AddQuantityFragment())
+            convertQuantityButton.setBackgroundColor(Color.BLUE)
+            addQuantityButton.setBackgroundColor(Color.RED)
         }
 
 

@@ -7,41 +7,43 @@
 
     <Spinner
         android:id="@+id/topLeftSpinnerAdd"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="259dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="76dp"
         android:layout_marginTop="16dp"
-        android:entries="@array/metrics"
+        android:background="@android:drawable/btn_dropdown"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/bottomAddSpinner1"
-        android:layout_width="89dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:entries="@array/metrics"
+        android:layout_width="104dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:drawable/btn_dropdown"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstValueAdd" />
 
     <Spinner
         android:id="@+id/bottomAddSpinner3"
-        android:layout_width="89dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="26dp"
-        android:entries="@array/metrics"
+        android:layout_width="104dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@android:drawable/btn_dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultValueAdd" />
 
     <Spinner
         android:id="@+id/bottomAddSpinner2"
-        android:layout_width="89dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="25dp"
-        android:entries="@array/metrics"
+        android:layout_width="104dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/btn_dropdown"
+        app:layout_constraintEnd_toStartOf="@+id/bottomAddSpinner3"
         app:layout_constraintStart_toEndOf="@+id/bottomAddSpinner1"
         app:layout_constraintTop_toBottomOf="@+id/secondValueAdd" />
 

@@ -112,7 +112,7 @@ object ConvertValues {
     private fun convertFahrenheit(inputValue: Double, rightUnit: String): Double {
         return when(rightUnit){
             "CELSIUS" -> {
-                (inputValue - 32 ) * (5/9)
+                (inputValue - 32 ) * (5.0/9.0)
             }
             "FAHRENHEIT" -> {
                 inputValue
@@ -234,6 +234,9 @@ object ConvertValues {
 
     }
     private fun convertTo(selectedMetric: String, firstUnit: String, resultUnit: String, inputValue: Double) : Double {
+        if(inputValue == Double.MAX_VALUE){
+            return 0.0
+        }
         return when(selectedMetric){
             "Length" -> calculateLength(inputValue,firstUnit,resultUnit)
             "Weight" -> calculateWeight(inputValue,firstUnit,resultUnit)
