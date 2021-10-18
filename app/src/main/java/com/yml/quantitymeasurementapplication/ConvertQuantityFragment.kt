@@ -1,5 +1,6 @@
 package com.yml.quantitymeasurementapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -22,8 +23,8 @@ class ConvertQuantityFragment : Fragment(R.layout.convert_quantity) {
     lateinit var resultValue : EditText
     companion object{
         var selectedMetric : String = "Length"
-        var firstUnit = "CENTIMETER"
-        var secondUnit = "CENTIMETER"
+        var firstUnit = ""
+        var secondUnit = ""
         var output = 0.0
         var input = 0.0
     }
@@ -35,6 +36,7 @@ class ConvertQuantityFragment : Fragment(R.layout.convert_quantity) {
         bottomRightSpinner = view.findViewById<Spinner>(R.id.bottomRightSpinnerConvert)
         userInput = view.findViewById<EditText>(R.id.firstValueConvert)
         resultValue = view.findViewById(R.id.secondValueConvert)
+        resultValue.setText("")
 
         var arrayAdapter = ArrayAdapter.createFromResource(requireContext(),R.array.metrics,android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -90,7 +92,7 @@ class ConvertQuantityFragment : Fragment(R.layout.convert_quantity) {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(userInput.text.isNullOrEmpty()){
-                    input = 0.0
+                    input = Double.MAX_VALUE
                     selectAndConvertValues()
                     return
                 }
@@ -105,6 +107,11 @@ class ConvertQuantityFragment : Fragment(R.layout.convert_quantity) {
     }
 
     private fun selectAndConvertValues() {
+        if(input == Double.MAX_VALUE){
+            output = 0.0
+            resultValue.setText(output.toString())
+            return
+        }
         output = when (selectedMetric) {
             "Length" -> {
                 ConvertValues.calculateLength(input, firstUnit, secondUnit)
@@ -120,7 +127,13 @@ class ConvertQuantityFragment : Fragment(R.layout.convert_quantity) {
             }
             else -> 0.0
         }
-        resultValue.setText(output.toString())
+        var outputFormatString = String.format("%.3f", output)
+        resultValue.setText(outputFormatString)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        resultValue.setText("")
     }
 
 }

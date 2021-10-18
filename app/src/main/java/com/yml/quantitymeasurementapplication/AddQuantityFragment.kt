@@ -27,9 +27,9 @@ class AddQuantityFragment : Fragment(R.layout.add_quantity) {
         var firstUnit = "CENTIMETER"
         var secondUnit = "CENTIMETER"
         var resultUnit = "CENTIMETER"
-        var output = 0.0
-        var input1 = 0.0
-        var input2 = 0.0
+        var output = Double.MAX_VALUE
+        var input1 = Double.MAX_VALUE
+        var input2 = Double.MAX_VALUE
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -86,7 +86,7 @@ class AddQuantityFragment : Fragment(R.layout.add_quantity) {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(p0.isNullOrEmpty()){
-                    input1 =  0.0
+                    input1 = Double.MAX_VALUE
                     selectAndConvertValues()
                     return
                 }
@@ -102,7 +102,7 @@ class AddQuantityFragment : Fragment(R.layout.add_quantity) {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(p0.isNullOrEmpty()){
-                    input2 =  0.0
+                    input2 =  Double.MAX_VALUE
                     selectAndConvertValues()
                     return
                 }
@@ -126,5 +126,10 @@ class AddQuantityFragment : Fragment(R.layout.add_quantity) {
         bottomLeftSpinner.adapter = unitMetricAdapter
         bottomMiddleSpinner.adapter = unitMetricAdapter
         bottomRightSpinner.adapter = unitMetricAdapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        resultOutput.setText("")
     }
 }

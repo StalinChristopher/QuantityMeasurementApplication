@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../Library/Android/sdk/platforms/android-31/data/res/drawable/btn_dropdown.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10014286464748202" />
         <entry key="app/src/main/res/layout/add_quantity.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/convert_quantity.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/convert_quantity.xml" value="0.10014286464748202" />
       </map>
     </option>
   </component>
